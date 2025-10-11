@@ -109,7 +109,7 @@ export default function About() {
           <div>
             <h3>🌿 Our Mission</h3>
             <p>
-              To empower local weavers and promote sustainable craftsmanship that tells Africa's story — one basket at a time.
+              To empower local weavers and promote sustainable craftsmanship that tells Africa&#39;s story — one basket at a time.
             </p>
           </div>
           <div>
