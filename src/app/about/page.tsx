@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const AboutHero = styled.section`
-  background: url('https://lbkzzugcazmoxutvmneq.supabase.co/storage/v1/object/public/matts-baskets-images/baskets-bg.jpg') center/cover no-repeat;
   height: 60vh;
   position: relative;
   display: flex;

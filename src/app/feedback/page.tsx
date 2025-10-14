@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const FeedbackHero = styled.section`
-  background: url('https://lbkzzugcazmoxutvmneq.supabase.co/storage/v1/object/public/matts-baskets-images/feedback-bg.jpg') center/cover no-repeat;
   height: 50vh;
   position: relative;
   display: flex;

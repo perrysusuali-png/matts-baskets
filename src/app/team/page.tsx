@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
 
 const TeamHero = styled.section`
-  background: url('https://lbkzzugcazmoxutvmneq.supabase.co/storage/v1/object/public/matts-baskets-images/team-bg.jpg') center/cover no-repeat;
   height: 40vh;
   display: flex;
   justify-content: center;

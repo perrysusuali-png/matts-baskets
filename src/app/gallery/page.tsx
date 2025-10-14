@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
 
 const GalleryHero = styled.section`
-  background: url('https://lbkzzugcazmoxutvmneq.supabase.co/storage/v1/object/public/matts-baskets-images/baskets-bg.jpg') center/cover no-repeat;
   height: 50vh;
   position: relative;
   display: flex;
