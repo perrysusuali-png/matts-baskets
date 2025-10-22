@@ -188,10 +188,10 @@ export default function Cart() {
 
   const handleCheckout = () => {
     if (cart.length === 0) {
-      alert('Your cart is empty!');
+      // Could show a toast notification instead
       return;
     }
-    alert('Please select a payment method below.');
+    // Payment method selection is now automatic
   };
 
   return (
@@ -229,17 +229,8 @@ export default function Cart() {
                 <p className="total">Total: ${total}</p>
 
                 <PaymentOptions>
-                  <PaymentButton onClick={() => handlePayment('Cash on Delivery')}>
-                    💵 Cash on Delivery
-                  </PaymentButton>
                   <PaymentButton onClick={() => handlePayment('Mobile Money')}>
                     📱 Mobile Money
-                  </PaymentButton>
-                  <PaymentButton onClick={() => handlePayment('Bank Transfer')}>
-                    🏦 Bank Transfer
-                  </PaymentButton>
-                  <PaymentButton onClick={() => handlePayment('PayPal')}>
-                    💳 PayPal
                   </PaymentButton>
                 </PaymentOptions>
 

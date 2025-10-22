@@ -161,7 +161,7 @@ export default function Gallery() {
     const updatedCart = [...currentCart, product];
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCart(updatedCart);
-    alert(`${product.name} added to cart!`);
+    // Removed alert for better UX
   };
 
   return (

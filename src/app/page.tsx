@@ -140,20 +140,20 @@ export default function Home() {
 
       <Highlights>
         <Highlight>
-          <img src={getImageUrl('basket8.jpg')} alt="" />
-          <h3>Tradition Woven in Every Thread</h3>
+          <img src={getImageUrl('basket8.jpg')} alt="Small Decorative Basket" />
+          <h3>Small Decorative Basket</h3>
           <p>Each basket is carefully handmade with love, patience, and precision.</p>
         </Highlight>
 
         <Highlight>
-          <img src={getImageUrl('basket20.jpg')} alt="" />
-          <h3>Inspired by Nature</h3>
+          <img src={getImageUrl('basket20.jpg')} alt="Traditional African Basket" />
+          <h3>Traditional African Basket</h3>
           <p>Made from 100% natural fibers and eco-friendly materials.</p>
         </Highlight>
 
         <Highlight>
-          <img src={getImageUrl('basket25.jpg')} alt="" />
-          <h3>Crafted for the World</h3>
+          <img src={getImageUrl('basket25.jpg')} alt="Compact Travel Basket" />
+          <h3>Compact Travel Basket</h3>
           <p>Beautiful designs for homes, stores, and cultural spaces worldwide.</p>
         </Highlight>
       </Highlights>

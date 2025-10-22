@@ -43,6 +43,17 @@ body {
   }
 }
 
+/* Consistent section padding */
+section {
+  padding: 4rem 8%;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 4%;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -4,11 +4,11 @@ const FooterContainer = styled.footer`
   background-color: #2e7d32;
   color: #fff;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2rem 8%;
   border-top: 2px solid #c99b44;
 
   @media (max-width: 768px) {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 4%;
   }
 
   h3 {
