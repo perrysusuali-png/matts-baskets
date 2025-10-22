@@ -80,6 +80,7 @@ export default function Navbar({ activePage }: NavbarProps) {
         <li><Link href="/" className={activePage === 'home' ? 'active' : ''}>Home</Link></li>
         <li><Link href="/about" className={activePage === 'about' ? 'active' : ''}>About</Link></li>
         <li><Link href="/gallery" className={activePage === 'gallery' ? 'active' : ''}>Gallery</Link></li>
+        <li><Link href="/cart" className={activePage === 'cart' ? 'active' : ''}>Cart</Link></li>
         <li><Link href="/order" className={activePage === 'order' ? 'active' : ''}>Order</Link></li>
         <li><Link href="/feedback" className={activePage === 'feedback' ? 'active' : ''}>Feedback</Link></li>
         <li><Link href="/team" className={activePage === 'team' ? 'active' : ''}>Team</Link></li>

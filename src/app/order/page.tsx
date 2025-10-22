@@ -107,15 +107,20 @@ export default function Order() {
     const name = (form.elements.namedItem('name') as HTMLInputElement).value;
     const phone = (form.elements.namedItem('phone') as HTMLInputElement).value;
     const basket = (form.elements.namedItem('basket') as HTMLInputElement).value;
-    const quantity = (form.elements.namedItem('quantity') as HTMLInputElement).value;
+    const price = parseFloat((form.elements.namedItem('price') as HTMLInputElement).value);
+    const quantity = parseInt((form.elements.namedItem('quantity') as HTMLInputElement).value);
     const location = (form.elements.namedItem('location') as HTMLInputElement).value;
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+
+    const total = price * quantity;
 
     const text = `🧺 *New Basket Order!*%0A
 👤 Name: ${name}%0A
 📞 Phone: ${phone}%0A
 🧺 Basket Type: ${basket}%0A
-🔢 Quantity: ${quantity}%0A
+💰 Price per Basket: $${price.toFixed(2)}%0A
+� Quantity: ${quantity}%0A
+💵 Total: $${total.toFixed(2)}%0A
 📍 Location: ${location}%0A
 💬 Message: ${message || "None"}`;
 
@@ -152,6 +157,11 @@ export default function Order() {
           <FormGroup>
             <label>Basket Name or Type</label>
             <input type="text" name="basket" placeholder="e.g. Large Woven Basket" required />
+          </FormGroup>
+
+          <FormGroup>
+            <label>Price per Basket ($)</label>
+            <input type="number" name="price" min="0" step="0.01" placeholder="e.g. 50.00" required />
           </FormGroup>
 
           <FormGroup>

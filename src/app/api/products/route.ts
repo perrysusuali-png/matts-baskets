@@ -9,10 +9,10 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { name, price } = body;
+  const { name, price, image } = body;
   const { data, error } = await supabaseServer
     .from('products')
-    .insert([{ name, price }])
+    .insert([{ name, price, image }])
     .select()
     .single();
 
