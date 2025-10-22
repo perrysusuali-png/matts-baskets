@@ -29,6 +29,10 @@ const HeroOverlay = styled.div`
   color: #fff;
   padding: 2rem;
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   h1 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1rem;
@@ -62,6 +66,11 @@ const Highlights = styled.section`
   gap: 1.5rem;
   padding: 4rem 8%;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    padding: 2rem 4%;
+    gap: 1rem;
+  }
 `;
 
 const Highlight = styled.div`
@@ -96,6 +105,10 @@ const CtaSection = styled.section`
   background: #2e7d32;
   color: #fff;
   padding: 3rem 1rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 
   h2 {
     margin-bottom: 1rem;

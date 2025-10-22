@@ -30,6 +30,19 @@ body {
   margin: 0;
 }
 
+/* Responsive padding utilities */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 2rem 4%;
+  }
+}
+
+@media (min-width: 769px) {
+  .section-padding {
+    padding: 4rem 8%;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;

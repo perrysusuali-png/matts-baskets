@@ -22,6 +22,10 @@ const GalleryHeroOverlay = styled.div`
   border-radius: 12px;
   backdrop-filter: blur(3px);
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -30,6 +34,10 @@ const GalleryHeroOverlay = styled.div`
 
 const GallerySection = styled.section`
   padding: 3rem 8%;
+
+  @media (max-width: 768px) {
+    padding: 2rem 4%;
+  }
 `;
 
 const GalleryGrid = styled.div`

@@ -14,6 +14,10 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
+
+  @media (max-width: 768px) {
+    padding: 1rem 4%;
+  }
 `;
 
 const Logo = styled.h1`

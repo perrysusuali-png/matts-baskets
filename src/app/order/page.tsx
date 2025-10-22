@@ -21,6 +21,10 @@ const OrderHeroOverlay = styled.div`
   border-radius: 12px;
   backdrop-filter: blur(3px);
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   h2 {
     font-size: 2.2rem;
     color: #ffd600;
@@ -37,6 +41,10 @@ const OrderHeroOverlay = styled.div`
 const OrderFormSection = styled.section`
   padding: 3rem 10%;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 2rem 4%;
+  }
 `;
 
 const Form = styled.form`
@@ -46,6 +54,10 @@ const Form = styled.form`
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 
   h3 {
     color: #2e7d32;

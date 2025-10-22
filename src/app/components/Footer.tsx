@@ -7,6 +7,10 @@ const FooterContainer = styled.footer`
   padding: 2rem 1rem;
   border-top: 2px solid #c99b44;
 
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
   h3 {
     color: #c99b44;
   }
