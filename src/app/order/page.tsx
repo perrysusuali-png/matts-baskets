@@ -39,11 +39,11 @@ const OrderHeroOverlay = styled.div`
 `;
 
 const OrderFormSection = styled.section`
-  padding: 3rem 10%;
+  padding: 4rem 10%;
   text-align: center;
 
   @media (max-width: 768px) {
-    padding: 2rem 4%;
+    padding: 3rem 5%;
   }
 `;
 
@@ -51,12 +51,12 @@ const Form = styled.form`
   max-width: 500px;
   margin: 0 auto;
   background: #fff;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 
   h3 {
@@ -66,7 +66,7 @@ const Form = styled.form`
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: left;
 
   label {
@@ -99,7 +99,7 @@ const Button = styled.button`
   background-color: #2e7d32;
   color: #fff;
   border: none;
-  padding: 0.9rem;
+  padding: 1rem;
   width: 100%;
   border-radius: 8px;
   font-size: 1rem;
