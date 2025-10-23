@@ -122,6 +122,7 @@ export default function Order() {
     const price = parseFloat((form.elements.namedItem('price') as HTMLInputElement).value);
     const quantity = parseInt((form.elements.namedItem('quantity') as HTMLInputElement).value);
     const location = (form.elements.namedItem('location') as HTMLInputElement).value;
+    const paymentMethod = (form.elements.namedItem('paymentMethod') as HTMLSelectElement).value;
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
 
     const total = price * quantity;
@@ -134,7 +135,8 @@ export default function Order() {
 � Quantity: ${quantity}%0A
 💵 Total: ₵${total.toFixed(2)}%0A
 📍 Location: ${location}%0A
-💬 Message: ${message || "None"}`;
+💳 Payment Method: ${paymentMethod}%0A
+� Message: ${message || "None"}`;
 
     const whatsappNumber = "233247838767";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
@@ -184,6 +186,17 @@ export default function Order() {
           <FormGroup>
             <label>Location</label>
             <input type="text" name="location" placeholder="Your delivery address or city" required />
+          </FormGroup>
+
+          <FormGroup>
+            <label>Payment Method</label>
+            <select name="paymentMethod" required>
+              <option value="">Select Payment Method</option>
+              <option value="MTN Mobile Money">MTN Mobile Money</option>
+              <option value="Vodafone Cash">Vodafone Cash</option>
+              <option value="Airtel Money">Airtel Money</option>
+              <option value="Tigo Cash">Tigo Cash</option>
+            </select>
           </FormGroup>
 
           <FormGroup>
