@@ -182,7 +182,7 @@ export default function Gallery() {
               <img src={getImageUrl(product.image)} alt={product.name} loading="lazy" />
               <div className="info">
                 <h3>{product.name}</h3>
-                <p>${product.price}</p>
+                <p>₵{product.price}</p>
               </div>
               <button onClick={() => addToCart(product)}>Add to Cart</button>
             </BasketCard>

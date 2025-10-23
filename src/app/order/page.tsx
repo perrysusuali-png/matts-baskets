@@ -130,9 +130,9 @@ export default function Order() {
 👤 Name: ${name}%0A
 📞 Phone: ${phone}%0A
 🧺 Basket Type: ${basket}%0A
-💰 Price per Basket: $${price.toFixed(2)}%0A
+💰 Price per Basket: ₵${price.toFixed(2)}%0A
 � Quantity: ${quantity}%0A
-💵 Total: $${total.toFixed(2)}%0A
+💵 Total: ₵${total.toFixed(2)}%0A
 📍 Location: ${location}%0A
 💬 Message: ${message || "None"}`;
 
@@ -172,7 +172,7 @@ export default function Order() {
           </FormGroup>
 
           <FormGroup>
-            <label>Price per Basket ($)</label>
+            <label>Price per Basket (₵)</label>
             <input type="number" name="price" min="0" step="0.01" placeholder="e.g. 50.00" required />
           </FormGroup>
 

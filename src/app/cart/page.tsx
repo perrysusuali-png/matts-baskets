@@ -178,7 +178,7 @@ export default function Cart() {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   const handlePayment = (method: string) => {
-    const message = `🛒 *Cart Checkout*%0A%0A${cart.map(item => `• ${item.name} - $${item.price}`).join('%0A')}%0A%0ATotal: $${total}%0APayment Method: ${method}`;
+    const message = `🛒 *Cart Checkout*%0A%0A${cart.map(item => `• ${item.name} - ₵${item.price}`).join('%0A')}%0A%0ATotal: ₵${total}%0APayment Method: ${method}`;
 
     const whatsappNumber = "233247838767";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -218,7 +218,7 @@ export default function Cart() {
                   <img src={getImageUrl(item.image)} alt={item.name} />
                   <div className="info">
                     <h3>{item.name}</h3>
-                    <p>${item.price}</p>
+                    <p>₵{item.price}</p>
                   </div>
                   <button onClick={() => removeFromCart(index)}>Remove</button>
                 </CartItem>
@@ -226,7 +226,7 @@ export default function Cart() {
 
               <CartSummary>
                 <h3>Order Summary</h3>
-                <p className="total">Total: ${total}</p>
+                <p className="total">Total: ₵{total}</p>
 
                 <PaymentOptions>
                   <PaymentButton onClick={() => handlePayment('Mobile Money')}>
