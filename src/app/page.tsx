@@ -6,20 +6,12 @@ import Footer from './components/Footer';
 import { getImageUrl } from './lib/images';
 
 const Hero = styled.section`
-  background: url('/logo_matts_basket.jpg') center/contain no-repeat;
+  background: url('/logo_matts_basket.jpg') center/cover no-repeat;
   height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(46, 125, 50, 0.45);
-  }
 `;
 
 const HeroOverlay = styled.div`

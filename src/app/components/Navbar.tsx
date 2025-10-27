@@ -46,15 +46,26 @@ const NavLinks = styled.ul<{ $active: boolean }>`
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 
+  li {
+    border-radius: 25px;
+    background-color: #2e7d32;
+    padding: 0.5rem 1rem;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #1b5e20;
+    }
+  }
+
   a {
-    text-decoration: none;
-    color: #444;
+    text-decoration: underline;
+    color: #fff;
     font-weight: 500;
     transition: 0.3s;
 
     &:hover,
     &.active {
-      color: #2e7d32;
+      color: #c99b44;
     }
   }
 `;

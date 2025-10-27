@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
 
 const AboutHero = styled.section`
+  background: url('/banner_matts basket.jpg') center/cover no-repeat;
   height: 60vh;
   position: relative;
   display: flex;
@@ -223,6 +224,30 @@ export default function About() {
           ))}
         </TeamGrid>
       </TeamSection>
+
+      <Container>
+        <h2>Contact Information</h2>
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <h3 style={{ color: '#2e7d32', marginBottom: '1rem' }}>Get In Touch</h3>
+          <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+            <strong>Email:</strong> info@mattsbaskets.com
+          </p>
+          <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+            <strong>Social Media:</strong>
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+            <a href="https://facebook.com/mattsbaskets" target="_blank" rel="noopener noreferrer" style={{ color: '#2e7d32', textDecoration: 'none', fontWeight: '500' }}>
+              Facebook: @mattsbaskets
+            </a>
+            <a href="https://instagram.com/mattsbaskets" target="_blank" rel="noopener noreferrer" style={{ color: '#2e7d32', textDecoration: 'none', fontWeight: '500' }}>
+              Instagram: @mattsbaskets
+            </a>
+            <a href="https://twitter.com/mattsbaskets" target="_blank" rel="noopener noreferrer" style={{ color: '#2e7d32', textDecoration: 'none', fontWeight: '500' }}>
+              Twitter: @mattsbaskets
+            </a>
+          </div>
+        </div>
+      </Container>
 
       <Footer />
     </>
