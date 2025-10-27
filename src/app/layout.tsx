@@ -24,7 +24,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={poppins.className} style={{ position: 'relative' }}>
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          zIndex: 1000,
+          opacity: 0.1,
+          pointerEvents: 'none'
+        }}>
+          <img
+            src="/logo_matts_basket.jpg"
+            alt="Matt's Baskets Logo"
+            style={{
+              width: '120px',
+              height: 'auto',
+              filter: 'grayscale(100%)'
+            }}
+          />
+        </div>
         <StyledComponentsRegistry>
           {children}
         </StyledComponentsRegistry>

@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import { getImageUrl } from './lib/images';
 
 const Hero = styled.section`
-  background: url('/logo_matts_basket.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
   height: 90vh;
   display: flex;
   justify-content: center;
