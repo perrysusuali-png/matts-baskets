@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import { getImageUrl } from './lib/images';
 
 const Hero = styled.section`
-  background: url('https://lbkzzugcazmoxutvmneq.supabase.co/storage/v1/object/public/matts-baskets-images/hero-baskets.jpg') center/cover no-repeat;
+  background: url('/logo_matts_basket.jpg') center/contain no-repeat;
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -142,7 +142,6 @@ export default function Home() {
 
       <Hero>
         <HeroOverlay>
-          <img src="/logo_matts_basket.jpg" alt="Matt's Baskets Logo" className="logo" />
           <h1>Authentic African Woven Art</h1>
           <p>Handcrafted baskets that carry stories, culture, and craftsmanship.</p>
           <CtaBtn href="/product">Explore Our Collection</CtaBtn>
