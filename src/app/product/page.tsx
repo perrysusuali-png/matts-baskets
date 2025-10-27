@@ -166,7 +166,7 @@ export default function Gallery() {
 
   return (
     <>
-      <Navbar activePage="gallery" />
+      <Navbar activePage="product" />
 
       <GalleryHero>
         <GalleryHeroOverlay>

@@ -134,7 +134,7 @@ export default function Home() {
         <HeroOverlay>
           <h1>Authentic African Woven Art</h1>
           <p>Handcrafted baskets that carry stories, culture, and craftsmanship.</p>
-          <CtaBtn href="/gallery">Explore Our Collection</CtaBtn>
+          <CtaBtn href="/product">Explore Our Collection</CtaBtn>
         </HeroOverlay>
       </Hero>
 
@@ -160,8 +160,8 @@ export default function Home() {
 
       <CtaSection>
         <h2>Want to See More?</h2>
-        <p>Step into our gallery and explore the beauty of African weaving.</p>
-        <CtaBtn href="/gallery">Visit Gallery</CtaBtn>
+        <p>Step into our product and explore the beauty of African weaving.</p>
+        <CtaBtn href="/product">Visit Product</CtaBtn>
       </CtaSection>
 
       <Footer />

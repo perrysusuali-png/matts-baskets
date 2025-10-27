@@ -209,7 +209,7 @@ export default function Cart() {
         <CartContainer>
           {cart.length === 0 ? (
             <p style={{ textAlign: 'center', fontSize: '1.2rem', color: '#666' }}>
-              Your cart is empty. Visit our gallery to add some beautiful baskets!
+              Your cart is empty. Visit our product to add some beautiful baskets!
             </p>
           ) : (
             <>
