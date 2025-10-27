@@ -22,6 +22,18 @@ const CartHeroOverlay = styled.div`
   color: #fff;
   border-radius: 12px;
   backdrop-filter: blur(3px);
+  animation: fadeInUp 1.2s ease-out;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @media (max-width: 768px) {
     padding: 1.5rem;
@@ -40,6 +52,19 @@ const CartHeroOverlay = styled.div`
   h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    transition: text-shadow 0.3s ease;
+
+    &:hover {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  p {
+    transition: text-shadow 0.3s ease;
+
+    &:hover {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+    }
   }
 `;
 

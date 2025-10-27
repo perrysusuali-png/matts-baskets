@@ -21,17 +21,39 @@ const FeedbackHeroOverlay = styled.div`
   color: #fff;
   border-radius: 12px;
   backdrop-filter: blur(3px);
+  animation: fadeInUp 1.2s ease-out;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   h2 {
     font-size: 2.2rem;
     color: #ffd600;
     text-shadow: 1px 1px 8px #2e7d32;
     margin-bottom: 1rem;
+    transition: text-shadow 0.3s ease;
+
+    &:hover {
+      text-shadow: 1px 1px 8px #2e7d32, 0 0 15px rgba(255, 214, 0, 0.8), 0 0 30px rgba(255, 214, 0, 0.6);
+    }
   }
 
   p {
     font-size: 1.15rem;
     color: #fffde7;
+    transition: text-shadow 0.3s ease;
+
+    &:hover {
+      text-shadow: 0 0 10px rgba(255, 253, 231, 0.7), 0 0 20px rgba(255, 253, 231, 0.5);
+    }
   }
 `;
 

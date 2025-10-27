@@ -39,6 +39,7 @@ const Logo = styled.h1`
   cursor: pointer;
   transition: all 0.3s ease;
   animation: fadeIn 1s ease-out;
+  position: relative;
 
   @keyframes fadeIn {
     from {
@@ -53,6 +54,7 @@ const Logo = styled.h1`
 
   &:hover {
     transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(201, 155, 68, 0.8), 0 0 20px rgba(201, 155, 68, 0.6);
   }
 
   span {
@@ -87,11 +89,28 @@ const NavLinks = styled.ul<{ $active: boolean }>`
     padding: 0.5rem 1rem;
     transition: all 0.3s ease;
     transform: scale(1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 155, 68, 0.4), transparent);
+      transition: left 0.5s;
+    }
 
     &:hover {
       background-color: #1b5e20;
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3), 0 0 20px rgba(201, 155, 68, 0.5);
+
+      &::before {
+        left: 100%;
+      }
     }
   }
 
