@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
 
 const AboutHero = styled.section`
-  background: url('/banner_matts basket.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
   height: 60vh;
   position: relative;
   display: flex;
@@ -21,6 +21,16 @@ const AboutHeroOverlay = styled.div`
   color: #fff;
   border-radius: 12px;
   backdrop-filter: blur(3px);
+
+  .logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      width: 80px;
+    }
+  }
 
   h2 {
     font-size: 2rem;

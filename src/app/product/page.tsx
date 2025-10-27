@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
 
 const GalleryHero = styled.section`
+  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
   height: 50vh;
   position: relative;
   display: flex;
@@ -24,6 +25,16 @@ const GalleryHeroOverlay = styled.div`
 
   @media (max-width: 768px) {
     padding: 1.5rem;
+  }
+
+  .logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      width: 80px;
+    }
   }
 
   h2 {
