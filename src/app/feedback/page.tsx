@@ -6,7 +6,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const FeedbackHero = styled.section`
-  height: 50vh;
+  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
+  height: 90vh;
   position: relative;
   display: flex;
   justify-content: center;
