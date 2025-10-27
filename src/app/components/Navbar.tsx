@@ -58,7 +58,7 @@ const NavLinks = styled.ul<{ $active: boolean }>`
   }
 
   a {
-    text-decoration: underline;
+    text-decoration: none;
     color: #fff;
     font-weight: 500;
     transition: 0.3s;
