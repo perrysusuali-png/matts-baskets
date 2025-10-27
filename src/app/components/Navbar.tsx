@@ -14,6 +14,18 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
+  animation: slideDown 0.8s ease-out;
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
   @media (max-width: 768px) {
     padding: 1rem 4%;
@@ -24,9 +36,32 @@ const Logo = styled.h1`
   font-size: 1.6rem;
   font-weight: 700;
   color: #2e7d32;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeIn 1s ease-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   span {
     color: #c99b44;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #2e7d32;
+    }
   }
 `;
 
@@ -50,10 +85,13 @@ const NavLinks = styled.ul<{ $active: boolean }>`
     border-radius: 25px;
     background-color: #2e7d32;
     padding: 0.5rem 1rem;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    transform: scale(1);
 
     &:hover {
       background-color: #1b5e20;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
     }
   }
 
