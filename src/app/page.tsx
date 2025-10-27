@@ -33,6 +33,16 @@ const HeroOverlay = styled.div`
     padding: 1.5rem;
   }
 
+  .logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      width: 100px;
+    }
+  }
+
   h1 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1rem;
@@ -132,6 +142,7 @@ export default function Home() {
 
       <Hero>
         <HeroOverlay>
+          <img src="/logo_matts_basket.jpg" alt="Matt's Baskets Logo" className="logo" />
           <h1>Authentic African Woven Art</h1>
           <p>Handcrafted baskets that carry stories, culture, and craftsmanship.</p>
           <CtaBtn href="/product">Explore Our Collection</CtaBtn>
