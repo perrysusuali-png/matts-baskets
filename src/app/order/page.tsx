@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 
 const OrderHero = styled.section`
   background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
-  height: 50vh;
+  height: 90vh;
   position: relative;
   display: flex;
   justify-content: center;

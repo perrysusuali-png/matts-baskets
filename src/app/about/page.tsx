@@ -7,7 +7,7 @@ import { getImageUrl } from '../lib/images';
 
 const AboutHero = styled.section`
   background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
-  height: 60vh;
+  height: 90vh;
   position: relative;
   display: flex;
   justify-content: center;
