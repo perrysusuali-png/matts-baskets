@@ -52,19 +52,22 @@ const CartHeroOverlay = styled.div`
   h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    transition: text-shadow 0.3s ease;
+    animation: textFadeIn 2s ease-out 0.5s both;
 
-    &:hover {
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+    @keyframes textFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 
   p {
-    transition: text-shadow 0.3s ease;
-
-    &:hover {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
-    }
+    animation: textFadeIn 2s ease-out 1s both;
   }
 `;
 
