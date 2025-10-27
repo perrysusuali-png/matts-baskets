@@ -87,7 +87,6 @@ export default function Navbar({ activePage }: NavbarProps) {
         <li><Link href="/cart" className={activePage === 'cart' ? 'active' : ''}>Cart</Link></li>
         <li><Link href="/order" className={activePage === 'order' ? 'active' : ''}>Order</Link></li>
         <li><Link href="/feedback" className={activePage === 'feedback' ? 'active' : ''}>Feedback</Link></li>
-        <li><Link href="/team" className={activePage === 'team' ? 'active' : ''}>Team</Link></li>
       </NavLinks>
       <MenuBtn onClick={() => setMenuActive(!menuActive)}>&#9776;</MenuBtn>
     </Nav>
