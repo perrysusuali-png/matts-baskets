@@ -204,7 +204,7 @@ export default function Gallery() {
           <GalleryGrid>
             {products.map((product) => (
               <BasketCard key={product.id}>
-                <img src={getImageUrl(product.image || 'basket8.jpg')} alt={product.name} loading="lazy" />
+                <img src={product.image?.startsWith('http') ? product.image : getImageUrl(product.image || 'basket8.jpg')} alt={product.name} loading="lazy" />
                 <div className="info">
                   <h3>{product.name}</h3>
                   {product.description && <p style={{ fontSize: '0.9rem', color: '#666', margin: '0.5rem 0' }}>{product.description}</p>}

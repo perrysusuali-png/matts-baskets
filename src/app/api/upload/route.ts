@@ -1,32 +1,49 @@
-import { NextResponse } from 'next/server';
-import { supabaseServer } from '@/app/lib/supabase';
-import { randomUUID } from 'crypto';
+import { createClient } from '@supabase/supabase-js';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: Request) {
-  const formData = await req.formData();
-  const file = formData.get('file') as File | null;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
 
-  if (!file) {
-    return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
-  }
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  const fileName = `${randomUUID()}-${file.name}`;
-  const bucket = process.env.SUPABASE_BUCKET!;
+export async function POST(request: NextRequest) {
+  try {
+    const formData = await request.formData();
+    const file = formData.get('file') as File;
 
-  const { data, error } = await supabaseServer.storage
-    .from(bucket)
-    .upload(`images/${fileName}`, buffer, {
-      contentType: file.type,
+    if (!file) {
+      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
+    }
+
+    // Generate unique filename
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+
+    // Upload file to Supabase Storage
+    const { data, error } = await supabase.storage
+      .from('matts-baskets-images')
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
+
+    if (error) {
+      console.error('Upload error:', error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    // Get public URL
+    const { data: { publicUrl } } = supabase.storage
+      .from('matts-baskets-images')
+      .getPublicUrl(fileName);
+
+    return NextResponse.json({
+      url: publicUrl,
+      fileName: fileName
     });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+    console.error('Server error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
-
-  const { data: publicUrl } = supabaseServer.storage
-    .from(bucket)
-    .getPublicUrl(`images/${fileName}`);
-
-  return NextResponse.json({ url: publicUrl.publicUrl });
 }

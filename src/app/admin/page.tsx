@@ -211,6 +211,30 @@ const ModalContent = styled.div`
       min-height: 100px;
     }
 
+    .file-input {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      input[type="file"] {
+        padding: 0.5rem;
+        border: 2px dashed #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &:hover {
+          border-color: #2e7d32;
+        }
+      }
+
+      .preview {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+    }
+
     .actions {
       display: flex;
       gap: 1rem;
@@ -266,6 +290,9 @@ export default function Admin() {
     price: '',
     image: ''
   });
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>('');
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     // Check if user is logged in
@@ -314,6 +341,8 @@ export default function Admin() {
   const handleAddProduct = () => {
     setEditingProduct(null);
     setFormData({ name: '', description: '', price: '', image: '' });
+    setSelectedFile(null);
+    setImagePreview('');
     setShowModal(true);
   };
 
@@ -325,7 +354,38 @@ export default function Admin() {
       price: product.price.toString(),
       image: product.image || ''
     });
+    setSelectedFile(null);
+    setImagePreview(product.image || '');
     setShowModal(true);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to upload image');
+    }
+
+    const data = await response.json();
+    return data.url;
   };
 
   const handleDeleteProduct = async (id: number) => {
@@ -345,31 +405,47 @@ export default function Admin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setUploading(true);
 
-    const productData = {
-      name: formData.name,
-      description: formData.description,
-      price: parseFloat(formData.price),
-      ...(formData.image && { image: formData.image })
-    };
+    try {
+      let imageUrl = formData.image;
 
-    let result;
-    if (editingProduct) {
-      result = await supabase
-        .from('products')
-        .update(productData)
-        .eq('id', editingProduct.id);
-    } else {
-      result = await supabase
-        .from('products')
-        .insert([productData]);
-    }
+      // Upload new image if selected
+      if (selectedFile) {
+        imageUrl = await uploadImage(selectedFile);
+      }
 
-    if (result.error) {
-      alert('Error saving product: ' + result.error.message);
-    } else {
-      setShowModal(false);
-      fetchProducts();
+      const productData = {
+        name: formData.name,
+        description: formData.description,
+        price: parseFloat(formData.price),
+        ...(imageUrl && { image: imageUrl })
+      };
+
+      let result;
+      if (editingProduct) {
+        result = await supabase
+          .from('products')
+          .update(productData)
+          .eq('id', editingProduct.id);
+      } else {
+        result = await supabase
+          .from('products')
+          .insert([productData]);
+      }
+
+      if (result.error) {
+        alert('Error saving product: ' + result.error.message);
+      } else {
+        setShowModal(false);
+        setSelectedFile(null);
+        setImagePreview('');
+        fetchProducts();
+      }
+    } catch (error) {
+      alert('Error uploading image: ' + (error as Error).message);
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -422,7 +498,7 @@ export default function Admin() {
         <ProductsGrid>
           {products.map((product) => (
             <ProductCard key={product.id}>
-              <img src={`/images/${product.image || 'basket8.jpg'}`} alt={product.name} />
+              <img src={product.image?.startsWith('http') ? product.image : `/images/${product.image || 'basket8.jpg'}`} alt={product.name} />
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p className="price">₵{product.price}</p>
@@ -460,15 +536,26 @@ export default function Admin() {
                   onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                   required
                 />
-                <input
-                  type="text"
-                  placeholder="Image filename (e.g., basket6.jpg)"
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                />
+                <div className="file-input">
+                  <label>Product Image:</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                  {imagePreview && (
+                    <img src={imagePreview} alt="Preview" className="preview" />
+                  )}
+                  <input
+                    type="text"
+                    placeholder="Or enter image URL/filename"
+                    value={formData.image}
+                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                  />
+                </div>
                 <div className="actions">
-                  <button type="submit" className="save">
-                    {editingProduct ? 'Update' : 'Add'} Product
+                  <button type="submit" className="save" disabled={uploading}>
+                    {uploading ? 'Uploading...' : (editingProduct ? 'Update' : 'Add') + ' Product'}
                   </button>
                   <button type="button" className="cancel" onClick={() => setShowModal(false)}>
                     Cancel
