@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { supabase } from '@/app/lib/supabaseClient';
 
 const Nav = styled.nav`
   display: flex;
@@ -144,6 +145,26 @@ interface NavbarProps {
 
 export default function Navbar({ activePage }: NavbarProps) {
   const [menuActive, setMenuActive] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    // Check if user is logged in
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+
+    checkUser();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <Nav>
@@ -155,6 +176,13 @@ export default function Navbar({ activePage }: NavbarProps) {
         <li><Link href="/cart" className={activePage === 'cart' ? 'active' : ''}>Cart</Link></li>
         <li><Link href="/order" className={activePage === 'order' ? 'active' : ''}>Order</Link></li>
         <li><Link href="/feedback" className={activePage === 'feedback' ? 'active' : ''}>Contact</Link></li>
+        {user && (
+          <li style={{ backgroundColor: '#c99b44', marginTop: '0.5rem' }}>
+            <Link href="/admin" className={activePage === 'admin' ? 'active' : ''} style={{ color: '#2e7d32', fontWeight: 'bold' }}>
+              Admin Panel
+            </Link>
+          </li>
+        )}
       </NavLinks>
       <MenuBtn onClick={() => setMenuActive(!menuActive)}>&#9776;</MenuBtn>
     </Nav>
