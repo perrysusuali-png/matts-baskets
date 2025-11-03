@@ -15,21 +15,31 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
-  animation: slideDown 0.8s ease-out;
-
-  @keyframes slideDown {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
 
   @media (max-width: 768px) {
     padding: 1rem 4%;
+  }
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const LogoImage = styled.img`
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    height: 32px;
   }
 `;
 
@@ -37,24 +47,11 @@ const Logo = styled.h1`
   font-size: 1.6rem;
   font-weight: 700;
   color: #2e7d32;
-  cursor: pointer;
+  margin: 0;
   transition: all 0.3s ease;
-  animation: fadeIn 1s ease-out;
   position: relative;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
   &:hover {
-    transform: scale(1.05);
     text-shadow: 0 0 10px rgba(201, 155, 68, 0.8), 0 0 20px rgba(201, 155, 68, 0.6);
   }
 
@@ -168,7 +165,10 @@ export default function Navbar({ activePage }: NavbarProps) {
 
   return (
     <Nav>
-      <Logo>Matts<span>Baskets</span></Logo>
+      <LogoContainer as={Link} href="/">
+        <LogoImage src="/Fresh Green and White Logo for Matts Basket.png" alt="Matts Basket Logo" />
+        <Logo>Matts<span>Baskets</span></Logo>
+      </LogoContainer>
       <NavLinks $active={menuActive}>
         <li><Link href="/" className={activePage === 'home' ? 'active' : ''}>Home</Link></li>
         <li><Link href="/about" className={activePage === 'about' ? 'active' : ''}>About</Link></li>

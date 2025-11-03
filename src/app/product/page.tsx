@@ -173,19 +173,23 @@ export default function Gallery() {
         setProducts([]);
       });
 
-    // Load cart from localStorage
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+    // Load cart from localStorage (only on client side)
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
     }
   }, []);
 
   const addToCart = (product: Product) => {
-    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const updatedCart = [...currentCart, product];
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setCart(updatedCart);
-    // Removed alert for better UX
+    if (typeof window !== 'undefined') {
+      const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const updatedCart = [...currentCart, product];
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      setCart(updatedCart);
+      // Removed alert for better UX
+    }
   };
 
   return (

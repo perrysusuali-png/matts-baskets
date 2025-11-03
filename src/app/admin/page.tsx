@@ -7,6 +7,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { getImageUrl } from '../lib/images';
 
 const AdminContainer = styled.div`
   min-height: 100vh;
@@ -474,7 +475,7 @@ export default function Admin() {
               supabaseClient={supabase}
               appearance={{ theme: ThemeSupa }}
               providers={['google']}
-              redirectTo={`${window.location.origin}/admin`}
+              redirectTo={`${typeof window !== 'undefined' ? window.location.origin : ''}/admin`}
             />
           </div>
         </AuthSection>
@@ -498,7 +499,7 @@ export default function Admin() {
         <ProductsGrid>
           {products.map((product) => (
             <ProductCard key={product.id}>
-              <img src={product.image?.startsWith('http') ? product.image : `/images/${product.image || 'basket8.jpg'}`} alt={product.name} />
+              <img src={product.image?.startsWith('http') ? product.image : getImageUrl(product.image || 'basket8.jpg')} alt={product.name} />
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p className="price">₵{product.price}</p>

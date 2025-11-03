@@ -194,13 +194,13 @@ const teamMembers = [
     name: 'Akosua Boateng',
     role: 'Operations Manager',
     description: 'Akosua ensures every basket meets our high standards and coordinates global shipments.',
-    image: 'basket1.jpg'
+    image: 'Named after one of our basket weavers, Kevin Each….jpeg'
   },
   {
     name: 'Yaw Owusu',
     role: 'Lead Designer',
     description: 'Yaw brings creativity and innovation to our basket designs, blending tradition with modern style.',
-    image: 'basket31.jpg'
+    image: 'This thick weave sisal basket is a work of art….jpeg'
   }
 ];
 
