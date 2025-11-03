@@ -194,13 +194,13 @@ const teamMembers = [
     name: 'Akosua Boateng',
     role: 'Operations Manager',
     description: 'Akosua ensures every basket meets our high standards and coordinates global shipments.',
-    image: 'Named after one of our basket weavers, Kevin Each….jpeg'
+    image: '/Akosua Boateng.jpeg'
   },
   {
     name: 'Yaw Owusu',
     role: 'Lead Designer',
     description: 'Yaw brings creativity and innovation to our basket designs, blending tradition with modern style.',
-    image: 'This thick weave sisal basket is a work of art….jpeg'
+    image: '/Yaw owusu.jpeg'
   }
 ];
 
@@ -254,7 +254,10 @@ export default function About() {
         <TeamGrid>
           {teamMembers.map((member, index) => (
             <TeamMember key={index}>
-              <img src={getImageUrl(member.image)} alt={member.name} />
+              <img
+                src={member.image.startsWith('/') ? member.image : getImageUrl(member.image)}
+                alt={member.name}
+              />
               <h3>{member.name}</h3>
               <div className="role">{member.role}</div>
               <p>{member.description}</p>
