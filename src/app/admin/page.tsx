@@ -416,12 +416,15 @@ export default function Admin() {
         imageUrl = await uploadImage(selectedFile);
       }
 
-      const productData = {
+      const productData: any = {
         name: formData.name,
         description: formData.description,
-        price: parseFloat(formData.price),
-        ...(imageUrl && { image: imageUrl })
+        price: parseFloat(formData.price)
       };
+
+      if (imageUrl) {
+        productData.image = imageUrl;
+      }
 
       let result;
       if (editingProduct) {
