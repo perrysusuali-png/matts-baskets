@@ -151,8 +151,11 @@ const defaultProducts: Product[] = [];
 export default function Gallery() {
   const [products, setProducts] = useState<Product[]>(defaultProducts);
   const [cart, setCart] = useState<Product[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     fetch('/api/products')
       .then(res => res.json())
       .then(data => {
@@ -191,6 +194,27 @@ export default function Gallery() {
       // Removed alert for better UX
     }
   };
+
+  if (!isClient) {
+    return (
+      <>
+        <Navbar activePage="product" />
+        <GalleryHero>
+          <GalleryHeroOverlay>
+            <h2>Our Handwoven Masterpieces</h2>
+            <p>Explore our collection of African baskets — crafted with love, skill, and heritage.</p>
+          </GalleryHeroOverlay>
+        </GalleryHero>
+        <GallerySection>
+          <div style={{ textAlign: 'center', padding: '3rem', color: '#666' }}>
+            <h3>Loading products...</h3>
+            <p>Please wait while we load your products from the database.</p>
+          </div>
+        </GallerySection>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
