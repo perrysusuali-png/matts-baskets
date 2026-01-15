@@ -1,195 +1,76 @@
 'use client';
 
-import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { getImageUrl } from './lib/images';
-
-const Hero = styled.section`
-  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
-
-const HeroOverlay = styled.div`
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
-  animation: fadeInUp 1.2s ease-out;
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-
-  .logo {
-    width: 150px;
-    height: auto;
-    margin-bottom: 1rem;
-
-    @media (max-width: 768px) {
-      width: 100px;
-    }
-  }
-
-  h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1rem;
-    animation: textFadeIn 2s ease-out 0.5s both;
-
-    @keyframes textFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  }
-
-  p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    animation: textFadeIn 2s ease-out 1s both;
-  }
-`;
-
-const CtaBtn = styled.a`
-  display: inline-block;
-  padding: 0.9rem 2rem;
-  background-color: #c99b44;
-  color: #fff;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: 0.3s;
-  text-decoration: none;
-
-  &:hover {
-    background-color: #2e7d32;
-  }
-`;
-
-const Highlights = styled.section`
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 4rem 8%;
-  flex-wrap: wrap;
-
-  @media (max-width: 768px) {
-    padding: 2rem 4%;
-    gap: 1rem;
-  }
-`;
-
-const Highlight = styled.div`
-  background: #fff;
-  border-radius: 12px;
-  text-align: center;
-  padding: 2rem 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  max-width: 320px;
-  transition: 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-  }
-
-  img {
-    width: 100%;
-    border-radius: 10px;
-    height: 220px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-  }
-
-  h3 {
-    color: #2e7d32;
-    margin-bottom: 0.5rem;
-  }
-`;
-
-const CtaSection = styled.section`
-  text-align: center;
-  background: #2e7d32;
-  color: #fff;
-  padding: 3rem 1rem;
-
-  @media (max-width: 768px) {
-    padding: 2rem 1rem;
-  }
-
-  h2 {
-    margin-bottom: 1rem;
-    font-size: 2rem;
-  }
-
-  ${CtaBtn} {
-    background-color: #c99b44;
-
-    &:hover {
-      background-color: #fff;
-      color: #2e7d32;
-    }
-  }
-`;
 
 export default function Home() {
   return (
     <>
       <Navbar activePage="home" />
 
-      <Hero>
-        <HeroOverlay>
-          <h1>Authentic African Woven Art</h1>
-          <p>Handcrafted baskets that carry stories, culture, and craftsmanship.</p>
-          <CtaBtn href="/product">Explore Our Collection</CtaBtn>
-        </HeroOverlay>
-      </Hero>
+      <section
+        className="bg-cover bg-center bg-no-repeat h-[90vh] flex justify-center items-center relative"
+        style={{ backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg')" }}
+      >
+        <div className="relative z-10 text-center text-white p-8 md:p-6 animate-fade-in-up">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 animate-text-fade-in">
+            Authentic African Woven Art
+          </h1>
+          <p className="text-lg md:text-xl mb-8 animate-text-fade-in">
+            Handcrafted baskets that carry stories, culture, and craftsmanship.
+          </p>
+          <a
+            href="/product"
+            className="inline-block px-8 py-3 bg-secondary text-white rounded-full font-semibold transition duration-300 hover:bg-blue-700"
+          >
+            Explore Our Collection
+          </a>
+        </div>
+      </section>
 
-      <Highlights>
-        <Highlight>
-          <img src={getImageUrl('basket8.jpg')} alt="Small Decorative Basket" />
-          <h3>Small Decorative Basket</h3>
-          <p>Each basket is carefully handmade with love, patience, and precision.</p>
-        </Highlight>
+      <section className="flex justify-around items-start gap-6 py-16 px-8 md:px-32 flex-wrap">
+        <div className="bg-white rounded-lg text-center p-8 shadow-md max-w-xs transition duration-300 hover:-translate-y-2">
+          <img
+            src={getImageUrl('basket8.jpg')}
+            alt="Small Decorative Basket"
+            className="w-full h-52 object-cover rounded-lg mb-4"
+          />
+          <h3 className="text-primary mb-2 font-semibold">Small Decorative Basket</h3>
+          <p className="text-gray-600">Each basket is carefully handmade with love, patience, and precision.</p>
+        </div>
 
-        <Highlight>
-          <img src={getImageUrl('basket20.jpg')} alt="Traditional African Basket" />
-          <h3>Traditional African Basket</h3>
-          <p>Made from 100% natural fibers and eco-friendly materials.</p>
-        </Highlight>
+        <div className="bg-white rounded-lg text-center p-8 shadow-md max-w-xs transition duration-300 hover:-translate-y-2">
+          <img
+            src={getImageUrl('basket20.jpg')}
+            alt="Traditional African Basket"
+            className="w-full h-52 object-cover rounded-lg mb-4"
+          />
+          <h3 className="text-primary mb-2 font-semibold">Traditional African Basket</h3>
+          <p className="text-gray-600">Made from 100% natural fibers and eco-friendly materials.</p>
+        </div>
 
-        <Highlight>
-          <img src={getImageUrl('basket25.jpg')} alt="Compact Travel Basket" />
-          <h3>Compact Travel Basket</h3>
-          <p>Beautiful designs for homes, stores, and cultural spaces worldwide.</p>
-        </Highlight>
-      </Highlights>
+        <div className="bg-white rounded-lg text-center p-8 shadow-md max-w-xs transition duration-300 hover:-translate-y-2">
+          <img
+            src={getImageUrl('basket25.jpg')}
+            alt="Compact Travel Basket"
+            className="w-full h-52 object-cover rounded-lg mb-4"
+          />
+          <h3 className="text-primary mb-2 font-semibold">Compact Travel Basket</h3>
+          <p className="text-gray-600">Beautiful designs for homes, stores, and cultural spaces worldwide.</p>
+        </div>
+      </section>
 
-      <CtaSection>
-        <h2>Want to See More?</h2>
-        <p>Step into our product and explore the beauty of African weaving.</p>
-        <CtaBtn href="/product">Visit Product</CtaBtn>
-      </CtaSection>
+      <section className="text-center bg-secondary text-white py-12 px-4">
+        <h2 className="text-2xl md:text-3xl mb-4">Want to See More?</h2>
+        <p className="text-lg mb-6">Step into our product and explore the beauty of African weaving.</p>
+        <a
+          href="/product"
+          className="inline-block px-8 py-3 bg-primary text-white rounded-full font-semibold transition duration-300 hover:bg-blue-700 hover:text-white"
+        >
+          Visit Product
+        </a>
+      </section>
 
       <Footer />
     </>

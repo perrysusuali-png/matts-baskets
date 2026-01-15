@@ -1,187 +1,8 @@
 'use client';
 
-import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
-
-const AboutHero = styled.section`
-  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
-  height: 90vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const AboutHeroOverlay = styled.div`
-  background-color: rgba(46, 125, 50, 0.55);
-  padding: 2rem;
-  text-align: center;
-  color: #fff;
-  border-radius: 12px;
-  backdrop-filter: blur(3px);
-  animation: fadeInUp 1.2s ease-out;
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .logo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 1rem;
-
-    @media (max-width: 768px) {
-      width: 80px;
-    }
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    animation: textFadeIn 2s ease-out 0.5s both;
-
-    @keyframes textFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  }
-
-  p {
-    animation: textFadeIn 2s ease-out 1s both;
-  }
-`;
-
-const Container = styled.div`
-  padding: 3rem 10%;
-  line-height: 1.8;
-
-  h2 {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 1.5rem;
-  }
-
-  p {
-    color: #444;
-  }
-`;
-
-const Mission = styled.div`
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin: 2rem 0;
-
-  div {
-    flex: 1 1 45%;
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border-left: 5px solid #2e7d32;
-  }
-
-  h3 {
-    color: #2e7d32;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const Values = styled.div`
-  text-align: center;
-  margin-top: 2.5rem;
-
-  h3 {
-    color: #2e7d32;
-  }
-
-  ul {
-    list-style: none;
-    margin-top: 1rem;
-  }
-
-  li {
-    padding: 0.5rem 0;
-    font-weight: 500;
-    color: #c99b44;
-  }
-`;
-
-const TeamSection = styled.section`
-  padding: 3rem 8%;
-  text-align: center;
-
-  h3 {
-    color: #2e7d32;
-    margin-bottom: 2rem;
-  }
-`;
-
-const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-`;
-
-const TeamMember = styled.div`
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-  padding: 2rem 1rem;
-  text-align: center;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: translateY(-8px);
-  }
-
-  img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-    border: 3px solid #c99b44;
-  }
-
-  h3 {
-    color: #2e7d32;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-
-  p {
-    color: #444;
-    font-size: 0.98rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .role {
-    color: #c99b44;
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-`;
 
 const teamMembers = [
   {
@@ -209,86 +30,90 @@ export default function About() {
     <>
       <Navbar activePage="about" />
 
-      <AboutHero>
-        <AboutHeroOverlay>
-          <h2>We Weave Culture Into Every Basket</h2>
-          <p>Rirosa Global Ltd is proudly Ghanaian, sharing authentic African craftsmanship with the world.</p>
-        </AboutHeroOverlay>
-      </AboutHero>
+      <section
+        className="bg-cover bg-center bg-no-repeat h-[90vh] relative flex justify-center items-center"
+        style={{ backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg')" }}
+      >
+        <div className="bg-primary bg-opacity-55 p-8 text-center text-white rounded-lg backdrop-blur-sm animate-fade-in-up">
+          <h2 className="text-2xl mb-4 animate-text-fade-in">We Weave Culture Into Every Basket</h2>
+          <p className="animate-text-fade-in">Rirosa Global Ltd is proudly Ghanaian, sharing authentic African craftsmanship with the world.</p>
+        </div>
+      </section>
 
-      <Container>
-        <h2>Our Story</h2>
-        <p>
+      <div className="py-12 px-10 md:px-40 leading-relaxed">
+        <h2 className="text-center text-primary mb-6">Our Story</h2>
+        <p className="text-gray-700">
           Matts Baskets began with a simple dream — to showcase the beauty and skill of African artisans to a global audience.
           Our baskets are 100% handwoven in Ghana using eco-friendly materials, blending traditional artistry with modern design.
         </p>
 
-        <Mission>
-          <div>
-            <h3>🌿 Our Mission</h3>
-            <p>
+        <div className="flex flex-col md:flex-row gap-8 flex-wrap my-8">
+          <div className="flex-1 min-w-0 bg-white p-6 rounded-lg shadow-sm border-l-4 border-primary">
+            <h3 className="text-primary mb-2">🌿 Our Mission</h3>
+            <p className="text-gray-700">
               To empower local weavers and promote sustainable craftsmanship that tells Africa story — one basket at a time.
             </p>
           </div>
-          <div>
-            <h3>🌍 Our Vision</h3>
-            <p>
+          <div className="flex-1 min-w-0 bg-white p-6 rounded-lg shadow-sm border-l-4 border-primary">
+            <h3 className="text-primary mb-2">🌍 Our Vision</h3>
+            <p className="text-gray-700">
               To become a leading name in authentic African home decor and lifestyle products worldwide.
             </p>
           </div>
-        </Mission>
+        </div>
 
-        <Values>
-          <h3>Our Core Values</h3>
-          <ul>
-            <li>✨ Authentic Craftsmanship</li>
-            <li>💪 Empowering Local Communities</li>
-            <li>🌱 Sustainability</li>
-            <li>💖 Integrity & Fair Trade</li>
+        <div className="text-center mt-10">
+          <h3 className="text-primary mb-4">Our Core Values</h3>
+          <ul className="list-none mt-4">
+            <li className="py-2 font-medium text-secondary">✨ Authentic Craftsmanship</li>
+            <li className="py-2 font-medium text-secondary">💪 Empowering Local Communities</li>
+            <li className="py-2 font-medium text-secondary">🌱 Sustainability</li>
+            <li className="py-2 font-medium text-secondary">💖 Integrity & Fair Trade</li>
           </ul>
-        </Values>
-      </Container>
+        </div>
+      </div>
 
-      <TeamSection>
-        <h3>Our Team Members</h3>
-        <TeamGrid>
+      <section className="py-12 px-8 md:px-32 text-center">
+        <h3 className="text-primary mb-8">Our Team Members</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {teamMembers.map((member, index) => (
-            <TeamMember key={index}>
+            <div key={index} className="bg-white rounded-lg shadow-md p-8 text-center transition duration-200 hover:-translate-y-2">
               <img
                 src={member.image.startsWith('/') ? member.image : getImageUrl(member.image)}
                 alt={member.name}
+                className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-primary"
               />
-              <h3>{member.name}</h3>
-              <div className="role">{member.role}</div>
-              <p>{member.description}</p>
-            </TeamMember>
+              <h3 className="text-primary mb-2 text-xl">{member.name}</h3>
+              <div className="text-secondary font-semibold text-lg mb-2">{member.role}</div>
+              <p className="text-gray-700 text-sm">{member.description}</p>
+            </div>
           ))}
-        </TeamGrid>
-      </TeamSection>
+        </div>
+      </section>
 
-      <Container>
-        <h2>Contact Information</h2>
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <h3 style={{ color: '#2e7d32', marginBottom: '1rem' }}>Get In Touch</h3>
-          <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+      <div className="py-12 px-10 md:px-40 leading-relaxed">
+        <h2 className="text-center text-primary mb-6">Contact Information</h2>
+        <div className="text-center mt-8">
+          <h3 className="text-primary mb-4">Get In Touch</h3>
+          <p className="text-lg mb-4">
             <strong>Email:</strong> info@mattsbaskets.com
           </p>
-          <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+          <p className="text-lg mb-4">
             <strong>Social Media:</strong>
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-            <a href="https://facebook.com/mattsbaskets" target="_blank" rel="noopener noreferrer" style={{ color: '#2e7d32', textDecoration: 'none', fontWeight: '500' }}>
+          <div className="flex justify-center gap-8 flex-wrap">
+            <a href="https://facebook.com/mattsbaskets" target="_blank" rel="noopener noreferrer" className="text-primary no-underline font-medium hover:text-secondary">
               Facebook: @mattsbaskets
             </a>
-            <a href="https://instagram.com/mattsbaskets" target="_blank" rel="noopener noreferrer" style={{ color: '#2e7d32', textDecoration: 'none', fontWeight: '500' }}>
+            <a href="https://instagram.com/mattsbaskets" target="_blank" rel="noopener noreferrer" className="text-primary no-underline font-medium hover:text-secondary">
               Instagram: @mattsbaskets
             </a>
-            <a href="https://twitter.com/mattsbaskets" target="_blank" rel="noopener noreferrer" style={{ color: '#2e7d32', textDecoration: 'none', fontWeight: '500' }}>
+            <a href="https://twitter.com/mattsbaskets" target="_blank" rel="noopener noreferrer" className="text-primary no-underline font-medium hover:text-secondary">
               Twitter: @mattsbaskets
             </a>
           </div>
         </div>
-      </Container>
+      </div>
 
       <Footer />
     </>

@@ -1,142 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getImageUrl } from '../lib/images';
-
-const GalleryHero = styled.section`
-  background: linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg') center/cover no-repeat;
-  height: 90vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const GalleryHeroOverlay = styled.div`
-  background-color: rgba(46, 125, 50, 0.6);
-  padding: 2rem;
-  text-align: center;
-  color: #fff;
-  border-radius: 12px;
-  backdrop-filter: blur(3px);
-  animation: fadeInUp 1.2s ease-out;
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-
-  .logo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 1rem;
-
-    @media (max-width: 768px) {
-      width: 80px;
-    }
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    animation: textFadeIn 2s ease-out 0.5s both;
-
-    @keyframes textFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  }
-
-  p {
-    animation: textFadeIn 2s ease-out 1s both;
-  }
-`;
-
-const GallerySection = styled.section`
-  padding: 3rem 8%;
-
-  @media (max-width: 768px) {
-    padding: 2rem 4%;
-  }
-`;
-
-const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-`;
-
-const BasketCard = styled.div`
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-
-  img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .info {
-    padding: 1rem;
-    text-align: center;
-
-    h3 {
-      margin: 0 0 0.5rem 0;
-      color: #2e7d32;
-      font-size: 1.1rem;
-    }
-
-    p {
-      margin: 0 0 1rem 0;
-      color: #c99b44;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-  }
-
-  button {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #2e7d32;
-    color: #fff;
-    border: none;
-    border-radius: 0 0 12px 12px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #256828;
-    }
-  }
-`;
 
 interface Product {
   id: number;
@@ -199,18 +66,21 @@ export default function Gallery() {
     return (
       <>
         <Navbar activePage="product" />
-        <GalleryHero>
-          <GalleryHeroOverlay>
-            <h2>Our Handwoven Masterpieces</h2>
-            <p>Explore our collection of African baskets — crafted with love, skill, and heritage.</p>
-          </GalleryHeroOverlay>
-        </GalleryHero>
-        <GallerySection>
-          <div style={{ textAlign: 'center', padding: '3rem', color: '#666' }}>
-            <h3>Loading products...</h3>
+        <section
+          className="bg-cover bg-center bg-no-repeat h-[90vh] relative flex justify-center items-center"
+          style={{ backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg')" }}
+        >
+          <div className="bg-primary bg-opacity-60 p-8 text-center text-white rounded-lg backdrop-blur-sm animate-fade-in-up">
+            <h2 className="text-2xl mb-4 animate-text-fade-in">Our Handwoven Masterpieces</h2>
+            <p className="animate-text-fade-in">Explore our collection of African baskets — crafted with love, skill, and heritage.</p>
+          </div>
+        </section>
+        <section className="py-12 px-8 md:px-32">
+          <div className="text-center py-12 text-gray-600">
+            <h3 className="text-xl mb-2">Loading products...</h3>
             <p>Please wait while we load your products from the database.</p>
           </div>
-        </GallerySection>
+        </section>
         <Footer />
       </>
     );
@@ -220,35 +90,48 @@ export default function Gallery() {
     <>
       <Navbar activePage="product" />
 
-      <GalleryHero>
-        <GalleryHeroOverlay>
-          <h2>Our Handwoven Masterpieces</h2>
-          <p>Explore our collection of African baskets — crafted with love, skill, and heritage.</p>
-        </GalleryHeroOverlay>
-      </GalleryHero>
+      <section
+        className="bg-cover bg-center bg-no-repeat h-[90vh] relative flex justify-center items-center"
+        style={{ backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.3), rgba(46, 125, 50, 0.3)), url('/logo_matts_basket.jpg')" }}
+      >
+        <div className="bg-primary bg-opacity-60 p-8 text-center text-white rounded-lg backdrop-blur-sm animate-fade-in-up">
+          <h2 className="text-2xl mb-4 animate-text-fade-in">Our Handwoven Masterpieces</h2>
+          <p className="animate-text-fade-in">Explore our collection of African baskets — crafted with love, skill, and heritage.</p>
+        </div>
+      </section>
 
-      <GallerySection>
+      <section className="py-12 px-8 md:px-32">
         {products.length > 0 ? (
-          <GalleryGrid>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {products.map((product) => (
-              <BasketCard key={product.id}>
-                <img src={product.image?.startsWith('http') ? product.image : getImageUrl(product.image || 'basket8.jpg')} alt={product.name} loading="lazy" />
-                <div className="info">
-                  <h3>{product.name}</h3>
-                  {product.description && <p style={{ fontSize: '0.9rem', color: '#666', margin: '0.5rem 0' }}>{product.description}</p>}
-                  <p>₵{product.price}</p>
+              <div key={product.id} className="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:-translate-y-2">
+                <img
+                  src={product.image?.startsWith('http') ? product.image : getImageUrl(product.image || 'basket8.jpg')}
+                  alt={product.name}
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+                <div className="p-4 text-center">
+                  <h3 className="text-primary mb-2 font-semibold text-lg">{product.name}</h3>
+                  {product.description && <p className="text-sm text-gray-600 mb-2">{product.description}</p>}
+                  <p className="text-secondary font-bold text-xl mb-4">₵{product.price}</p>
                 </div>
-                <button onClick={() => addToCart(product)}>Add to Cart</button>
-              </BasketCard>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="w-full py-3 bg-primary text-white font-bold rounded-b-lg transition duration-300 hover:bg-blue-700"
+                >
+                  Add to Cart
+                </button>
+              </div>
             ))}
-          </GalleryGrid>
+          </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '3rem', color: '#666' }}>
-            <h3>Loading products...</h3>
+          <div className="text-center py-12 text-gray-600">
+            <h3 className="text-xl mb-2">Loading products...</h3>
             <p>Please wait while we load your products from the database.</p>
           </div>
         )}
-      </GallerySection>
+      </section>
 
       <Footer />
     </>
